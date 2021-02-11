@@ -1,13 +1,85 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+
 /* 
 
-    You can write your own styles here...
-    
-    
     ...Or you can use the import command to include 
     other sylesheets into your bunde as well, e.j:
     
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.board{
+    width: 32%;
+    height: 150px;
+    font-size: 80px;
+    background: rgba(33, 159, 197, 0.397);
+    border: 8px solid white;
+    display: inline-block;
+    float: left;
+    text-align: center;
+    line-height: 150px;
+}
+
+.container{
+    text-align: center;
+    width: 950px;
+    margin: 0 auto;
+}
+
+menu{
+    text-align: center;
+    margin: 10px;
+}
+
+button{
+    margin: 5px;
+}
+
+.hidden{
+    display: none;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+
+#title{
+    color: rgb(14, 115, 173);
+    text-align: center;
+    font-size: 60px;
+    margin: 30px;
+
+}
+#refreshBot{
+    margin: 20px;
+}
+
+#advTitle{
+    
+    margin: 15px;
+}
+
+#adv{
+color:red;
+margin: 10px;
+}
+
+.weapon{
+    font-size: 60px;
+    font-weight: bold;
+
+}
+.players{
+    text-align: center;
+    background: rgba(33, 159, 197, 0.397);
+    border-radius: 90px;
+    
+}
+
+.p1{
+    margin: 10px;
+}
