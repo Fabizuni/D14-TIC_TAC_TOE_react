@@ -10,9 +10,42 @@ class Tictactoe extends React.Component {
 		super();
 		this.state = {
 			gameBoard: ["", "", "", "", "", "", "", "", ""],
-			turn: "x",
-			winner: null
+			turn: "",
+			winner: null,
+			p1: "",
+			p2: "",
+			weaponSelector: ""
 		};
+
+		this.handleInput = this.handleInput.bind(this);
+		this.onWeaponSelect = this.onWeaponSelect.bind(this);
+		this.reset = this.reset.bind(this);
+	}
+
+	handleInput(event) {
+		const playerName = event.target.name;
+		const playerValue = event.target.value;
+
+		this.setState({
+			[playerName]: playerValue
+		});
+	}
+
+	onWeaponSelect(weapon) {
+		this.setState({
+			weaponSelector: weapon,
+			turn: weapon
+		});
+	}
+
+	reset() {
+		this.setState({
+			p1: "",
+			p2: "",
+			weaponSelector: "",
+			winner: null,
+			gameBoard: ["", "", "", "", "", "", "", "", ""]
+		});
 	}
 
 	updateTile(position, player) {
@@ -108,29 +141,44 @@ class Tictactoe extends React.Component {
 	}
 
 	render() {
+		const { p1, p2, weaponSelector } = this.state; // this.state.p1
 		return (
 			<div className="container">
 				<div className="menu">
 					<h1 id="title"> Tic Tac Toe</h1>
-					<PlayerSelector />
-					<Advertisements id="advTitle" winner={this.state.winner} />
-					<RefreshBottom
-						id="refreshBot"
-						reset={this.resetBoard.bind(this)}
+					<PlayerSelector
+						p1={p1}
+						p2={p2}
+						weaponSelector={weaponSelector}
+						onInputChange={this.handleInput}
+						onWeaponSelect={this.onWeaponSelect}
 					/>
+					<Advertisements
+						id="advTitle"
+						winner={this.state.winner}
+						showTurn={
+							p1 && p2 && weaponSelector && !this.state.winner
+						}
+						turn={this.state.turn}
+					/>
+					<RefreshBottom id="refreshBot" reset={this.reset} />
 				</div>
-				{this.state.gameBoard.map(
-					function(value, i) {
-						return (
-							<Board
-								key={i}
-								position={i}
-								value={value}
-								updateTile={this.updateTile.bind(this)}
-								turn={this.state.turn}
-							/>
-						);
-					}.bind(this)
+				{Boolean(p1 && p2 && weaponSelector) && (
+					<>
+						{this.state.gameBoard.map(
+							function(value, i) {
+								return (
+									<Board
+										key={i}
+										position={i}
+										value={value}
+										updateTile={this.updateTile.bind(this)}
+										turn={this.state.turn}
+									/>
+								);
+							}.bind(this)
+						)}
+					</>
 				)}
 			</div>
 		);

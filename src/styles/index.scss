@@ -64,8 +64,10 @@ body{
 }
 
 #adv{
-color:red;
+color:green;
 margin: 10px;
+font-size: 75px;
+font-weight: 400;
 }
 
 .weapon{
@@ -82,4 +84,10 @@ margin: 10px;
 
 .p1{
     margin: 10px;
+}
+
+#advShow{
+    font-size: 75px;
+    color: rgb(235, 142, 36);
+    font-weight: 300;
 }

@@ -19,5 +19,6 @@ export class Board extends Component {
 
 Board.propTypes = {
 	value: PropTypes.string,
-	position: PropTypes.number
+	position: PropTypes.number,
+	showBoard: PropTypes.bool
 };
